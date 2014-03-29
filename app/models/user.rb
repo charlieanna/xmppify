@@ -36,6 +36,6 @@ class User < ActiveRecord::Base
 
   def connect
     @jid, @sid, @rid = RubyBOSH.initialize_session("#{self.encrypted_data}@idlecampus.com", "#{ENV['DOORKEEPER_APP_SECRET']}", "http://idlecampus.com:5280/http-bind")
-   return  @jid, @sid, @rid
+   return {jid: @jid, id: @sid, rid: @rid }
   end
 end

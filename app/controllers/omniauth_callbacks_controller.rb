@@ -7,7 +7,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.save
     xmpp_credentials = sign_in_as @user
     ap xmpp_credentials
-    flash[:attacher] = attacher(xmpp_credentials)
+    flash[:attacher] = xmpp_credentials
     if @user.identities.find_by(provider:"github").nil?
       @user.identities.create(provider:"github",auth_token:oauth_data.info.github_auth_token,email:oauth_data.info.github_email) 
     end
@@ -19,13 +19,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def sign_in_as(user)
     return user.connect
-  end
-
-  def attacher(xmpp_credentials)
-    {
-      jid: xmpp_credentials.jid,
-      id: xmpp_credentials.sid,
-      rid: xmpp_credentials.rid
-    }
   end
 end
