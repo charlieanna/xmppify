@@ -6,7 +6,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.update_doorkeeper_credentials(oauth_data)
     @user.save
     sign_in_as @user
-    p @user
+    ap @user
     flash[:attacher] = attacher(@user)
     if @user.identities.find_by(provider:"github").nil?
       @user.identities.create(provider:"github",auth_token:oauth_data.info.github_auth_token,email:oauth_data.info.github_email) 
@@ -18,7 +18,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def sign_in_as(user)
-    user.connect
+    p user.connect
   end
 
   def attacher(user)
