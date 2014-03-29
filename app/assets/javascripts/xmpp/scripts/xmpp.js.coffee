@@ -1,42 +1,11 @@
 
 app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
-@xmpp = ["$scope","Data",($scope, Data) ->
+@xmpp = ["$scope",($scope) ->
   group_name = undefined
   group_code = undefined
   $scope.$watch "spin", (newValue, oldValue) ->
   
 
-  $scope.changeEmail = ->
-    console.log $scope.email
-    $.ajax
-      type: "GET"
-      url: "/users/checkEmail"
-      data:
-        email: $scope.email
-
-      success: (data) ->
-        console.log parseInt(data)
-        $("#emailicon").attr "class", "icon-check"  if parseInt(data) is 0
-        $("#emailicon").attr "class", "icon-remove"  if parseInt(data) > 0
-        console.log $("#emailicon")
-
-      dataType: ""
-
-
-  $scope.changeName = ->
-    console.log "name"
-    console.log $scope.user
-    $.ajax
-      type: "GET"
-      url: "/users/checkName"
-      data:
-        name: $scope.user
-
-      success: (data) ->
-        $("#nameicon").attr "class", "icon-check"  if parseInt(data) is 0
-        $("#nameicon").attr "class", "icon-remove"  if parseInt(data) > 0
-
-      dataType: ""
 
 
   $scope.connected = ->
@@ -265,12 +234,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
       localStorage.setItem "rid", $(body).attr("rid")
       localStorage.setItem "sid", $(body).attr("sid")
 
-  $scope.getGroupsCreated = ->
-    $.get "/groups", (data) ->
-      console.log "groups created"
-      console.log data
-      for d in data
-        Data.groupscreated.push d
+  
        
 
   $scope.checkIfGroupsToCreate =  ->
@@ -279,68 +243,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
         group_code = gon.group.grup_code
         $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
 	  
-  $scope.register1 = ->
-    console.log gon.attacher
-    form = $scope.signupform
-    connection = new Strophe.Connection("http://idlecampus.com//http-bind")
-    sid = localStorage.getItem("sid")
-    rid = localStorage.getItem("rid")
-    jid = localStorage.getItem("jid")
-    console.log "CREDENTIALS"
-    console.log sid
-    console.log rid
-    console.log jid
-    console.log connection
-    callback = (status) ->
-      console.log status
-      if status is Strophe.Status.REGISTER
-        connection.register.fields.username = user
-        connection.register.fields.password = password
-        connection.register.submit()
-      else if status is Strophe.Status.REGISTERED
-        localStorage.setItem "jid", user + "@idlecampus.com"
-        $scope.connect user + "@idlecampus.com", password
-        $scope.$digest()
-      else if status is Strophe.Status.CONNECTED
-        console.log "logged in!"
-      else
-
-    if (typeof gon isnt "undefined" and gon isnt null) and (gon.register?)
-      user = gon.register.name
-      email = gon.register.email
-      password = gon.register.password
-      connection.register.connect "idlecampus.com", callback, 60, 1
-    if (typeof gon isnt "undefined" and gon isnt null) and (gon.attacher?)
-      user = gon.attacher.user
-      password = gon.attacher.password
-      localStorage.setItem "jid", user + "@idlecampus.com"
-      return $scope.connect(user + "@idlecampus.com", password)
-   
-    if (typeof jid isnt "undefined" and jid isnt null) and (typeof sid isnt "undefined" and sid isnt null) and (typeof rid isnt "undefined" and rid isnt null) and jid isnt "" and sid isnt "" and rid isnt ""
-      console.log connection
-      connection.xmlInput = (body) ->
-        console.log body
-
-      connection.xmlOutput = (body) ->
-        console.log "XMPP OUTPUT"
-        console.log body
-        localStorage.setItem "rid", $(body).attr("rid")
-        localStorage.setItem "sid", $(body).attr("sid")
-
-      connection.attach jid, sid, rid, (status) ->
-        console.log status
-        if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
-          $scope.XMPP.connection = connection
-          $scope.XMPP.connection.jid = jid
-          console.log "attached"
-          $scope.connected()
-          $scope.getGroupsCreated()
-		        $scope.checkIfGroupsToCreate()
-        else
-          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED
-
-    $scope.XMPP.connection = connection
-
+ 
   $scope.signout = ->
     
     $scope.XMPP.connection.disconnect()
