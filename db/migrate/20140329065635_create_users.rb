@@ -1,9 +1,10 @@
+# This migration comes from xmppify_engine (originally 20140329065635)
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      add_column :users,:doorkeeper_uid,:integer
-      add_column :users,:doorkeeper_access_token,:string
-      add_column :users,:encrypted_data,:string
+      t.integer :doorkeeper_uid
+      t.string :doorkeeper_access_token
+      t.string :encrypted_data
       t.timestamps
     end
   end
