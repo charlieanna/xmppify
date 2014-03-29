@@ -16,6 +16,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
+  def sign_in_as(user)
+    user.connect
+  end
+
   def attacher(user)
     {
       jid: user.jid,
