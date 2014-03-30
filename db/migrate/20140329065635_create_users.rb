@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :doorkeeper_uid
       t.string :doorkeeper_access_token
       t.string :encrypted_data
+      t.string :email
       t.timestamps
     end
   end
