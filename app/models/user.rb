@@ -1,12 +1,12 @@
 require 'yaml'
 require 'ruby_bosh'
 class User < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked
+  # include PublicActivity::Model
+  # tracked
   has_many :identities
-  has_merit
-  acts_as_followable
-  acts_as_follower
+  # has_merit
+  # acts_as_followable
+  # acts_as_follower
   devise  :database_authenticatable, :omniauthable, :omniauth_providers => [:doorkeeper]
 
   after_create :register_user

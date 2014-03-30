@@ -1,12 +1,10 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.router_name = :xmppify
-  config.parent_controller = 'Xmppify::ApplicationController'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'a04a4999256872a557423c2a952ba0b5973ccb3720aa5d72597769a329b6d57badfebd4cd2c1017b693555653f6c80ad6d610ab5193160f73adc97c5e53fe29e'
+  # config.secret_key = '058e80931a360732d9e5a15541e5bbeb5b3cba57450fe85086d977567624e4909b2669021ad9cd0aa53c38a08be0757f72928c46250a44900e6456e05e594e7f'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -99,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '6bf98a1a5190d4781afdcf9fa954f203cac0b7381ee5e156303b9fb82cc6dbce4cf1825f37d6018cee5b07c7a8c847c432ab4e17a83be14585826208aea356af'
+  # config.pepper = '13c949e186732b75ec1ac7b8702bb172a96bc69afa2097dc09079a5fa40126627b42c12942e93b0e8d69224ac0dd9aefca3bc795aa450b253063e549e8a80172'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
