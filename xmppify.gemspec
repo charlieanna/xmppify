@@ -20,11 +20,12 @@ Gem::Specification.new do |spec|
   
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency 'angularjs-rails'
+  spec.add_dependency 'angularjs-rails'
   spec.add_dependency 'devise'
-  spec.add_development_dependency 'gon'
+  spec.add_dependency 'gon'
   spec.add_development_dependency 'rest-client'
   spec.add_development_dependency 'hpricot'
-  spec.add_development_dependency 'omniauth-oauth2'  
-  spec.add_development_dependency 'doorkeeper'  
+  spec.add_dependency 'omniauth-oauth2'  
+  spec.add_dependency 'doorkeeper'  
+  spec.add_dependency 'xmpp4r'
 end
