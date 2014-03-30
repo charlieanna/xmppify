@@ -4,7 +4,6 @@ class CreateIdentities < ActiveRecord::Migration
       t.references :user, index: true
       t.string :provider
       t.string :email
-
       t.timestamps
     end
   end

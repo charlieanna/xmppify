@@ -8,9 +8,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     xmpp_credentials = sign_in_as @user
     ap xmpp_credentials
     flash[:attacher] = xmpp_credentials
-    if @user.identities.find_by(provider:"github").nil?
-      @user.identities.create(provider:"github",auth_token:oauth_data.info.github_auth_token,email:oauth_data.info.github_email) 
-    end
+    # if @user.identities.find_by(provider:"github").nil?
+    #   @user.identities.create(provider:"github",auth_token:oauth_data.info.github_auth_token,email:oauth_data.info.github_email) 
+    # end
     sign_in @user
     redirect_to dashboard_path
   end
