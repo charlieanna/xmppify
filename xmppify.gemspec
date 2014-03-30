@@ -22,4 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency  'angularjs-rails'
    spec.add_development_dependency 'gon'
+  spec.add_development_dependency 'devise'
+  
+  
 end
