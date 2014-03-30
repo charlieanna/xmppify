@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rest-client'
   spec.add_development_dependency 'hpricot'
   spec.add_development_dependency 'omniauth-oauth2'  
+  spec.add_development_dependency 'doorkeeper'  
 end
