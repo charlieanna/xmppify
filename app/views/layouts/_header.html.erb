@@ -16,7 +16,7 @@
       <div class="w-col w-col-6 nav-column" data-role='nav-links'>
         <% if signed_in? -%>
       <div class="welcome">Welcome, <%= current_user.email %></div>
-       <%= link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, method: :delete, "ng-click" => "signout()",style:"margin:50px" %>
+       <%= link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, method: :delete %>
     <% else -%>
       <%= link_to "Sign in with IdleCampus", user_omniauth_authorize_path(:doorkeeper) %>
   
