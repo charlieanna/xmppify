@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'hpricot'
   spec.add_dependency 'omniauth-oauth2'  
   spec.add_dependency 'doorkeeper'  
-  spec.add_dependency ('xmpp4r','0.5.5'
+  spec.add_dependency ('xmpp4r','0.5.5')
   spec.add_development_dependency 'dotenv-rails'
   spec.add_development_dependency 'awesome_print'
 end
