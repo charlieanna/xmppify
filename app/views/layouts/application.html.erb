@@ -16,9 +16,11 @@
   </div>
 
   <div id='flash'>
-    <% flash.each do |key, value| -%>
-      <div id='flash_<%= key %>'><%=h value %></div>
-    <% end %>
+   <% if flash[:notice] %>
+    <p id="notice" ><%= flash[:notice] %></p> 
+   <% elsif flash[:alert] %>
+    <p id="alert" ><%= flash[:alert] %></p> 
+   <% end %>
   </div>
 
   <%= yield %>
