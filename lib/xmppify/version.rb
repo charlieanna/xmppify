@@ -1,3 +1,3 @@
 module Xmppify
-  VERSION = "0.0.46"
+  VERSION = "0.0.48"
 end

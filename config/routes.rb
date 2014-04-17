@@ -1,5 +1,4 @@
 Xmppify::Engine.routes.draw do
   devise_for :users
-  # devise_for :users, class_name: "Xmppify::User", module: :devise
-  
+  root to: 'high_voltage/pages#show', id: 'index' 
 end
