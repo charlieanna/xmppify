@@ -6,6 +6,7 @@ require 'xmpp4r'
 require 'doorkeeper'
 require 'hpricot'
 require 'gon'
+require 'high_voltage'
 module Xmppify
   class Engine < Rails::Engine
   end
