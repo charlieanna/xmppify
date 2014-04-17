@@ -16,9 +16,9 @@
       <div class="w-col w-col-6 nav-column" data-role='nav-links'>
         <% if signed_in? -%>
       <div class="welcome">Welcome, <%= current_user.email %></div>
-       <%= link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, main_app.destroy_user_session_path, method: :delete %>
+       <%= link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, destroy_user_session_path, method: :delete %>
     <% else -%>
-      <%= link_to "Sign in with IdleCampus", main_app.user_omniauth_authorize_path(:doorkeeper) %>
+      <%= link_to "Sign in with IdleCampus", user_omniauth_authorize_path(:doorkeeper) %>
   
           </span>
           
